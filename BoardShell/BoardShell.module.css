@@ -1,0 +1,24 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  block-size: 100dvh;
+  overflow: hidden;
+  background: var(--carbide-bg);
+}
+
+.root[data-has-background-image] {
+  background-image: var(--board-shell-bg-light);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root[data-has-background-image]:not(:global([data-theme='light'])) {
+    background-image: var(--board-shell-bg-dark);
+  }
+}
+
+:global([data-theme='dark']) .root[data-has-background-image] {
+  background-image: var(--board-shell-bg-dark);
+}

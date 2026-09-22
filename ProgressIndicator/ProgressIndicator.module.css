@@ -1,0 +1,131 @@
+.root {
+  box-sizing: border-box;
+  color: var(--carbide-text);
+  font-family: var(--carbide-font-sans);
+  font-size: var(--carbide-fs-body);
+  letter-spacing: var(--carbide-tracking-small);
+}
+
+.list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.list[data-orientation='vertical'] {
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--carbide-sp-3);
+  min-width: 0;
+}
+
+.item[data-orientation='horizontal'] {
+  flex: 1 1 0;
+}
+
+.item[data-orientation='vertical'] {
+  flex-direction: column;
+  gap: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--carbide-sp-3);
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: var(--carbide-touch-min);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.trigger:disabled {
+  cursor: default;
+}
+
+.trigger:not(:disabled):hover .label {
+  text-decoration: underline;
+}
+
+.indicator {
+  display: inline-flex;
+  flex: none;
+  color: var(--carbide-border-strong);
+}
+
+.icon {
+  inline-size: calc(var(--carbide-control-h) / 2);
+  block-size: calc(var(--carbide-control-h) / 2);
+}
+
+.text {
+  display: grid;
+  gap: var(--carbide-sp-1);
+  min-width: 0;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  overflow: hidden;
+  color: var(--carbide-text-helper);
+  font-size: var(--carbide-fs-label);
+  letter-spacing: var(--carbide-tracking-label);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.separator {
+  flex: 1 1 auto;
+  background: var(--carbide-border-subtle);
+}
+
+.separator[data-orientation='horizontal'] {
+  min-inline-size: var(--carbide-sp-5);
+  block-size: 1px;
+  margin-block-start: calc(var(--carbide-control-h) / 4);
+}
+
+.separator[data-orientation='vertical'] {
+  flex: none;
+  inline-size: 1px;
+  block-size: var(--carbide-sp-5);
+  margin-inline-start: calc(var(--carbide-control-h) / 4);
+}
+
+.item[data-state='complete'] .indicator,
+.item[data-state='current'] .indicator {
+  color: var(--carbide-accent);
+}
+
+.item[data-state='complete'] .separator {
+  background: var(--carbide-accent);
+}
+
+.item[data-state='current'] .label {
+  font-weight: 500;
+}
+
+.item[data-state='incomplete'] .label {
+  color: var(--carbide-text-2);
+}
+
+.item[data-state='invalid'] .indicator,
+.item[data-state='invalid'] .label {
+  color: var(--carbide-status-error-text);
+}
